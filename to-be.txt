@@ -1,16 +1,16 @@
 # package name
-com.enoo.smmy->com.enoo.dmmy
+com.example.smmy->com.example.dmmy
 
 # app name
 smmy -> dmmy
 
 # package directory(windows) - do not end with slash  
-\com\enoo\smmy->\com\enoo\dmmy
+\com\example\smmy->\com\example\dmmy
 
 # package directory(linux) - do not end with slash
-#/com/enoo/smmy->/com/enoo/dmmy
+#/com/example/smmy->/com/example/dmmy
 
 # Admob IDs
-ca-app-pub-7519373541244298~3110149692->ca-app-pub-ad_app_id~XXXXXXXXXXXX
-ca-app-pub-7519373541244298/1605496332->ca-app-pub-ad_banner_id~XXXXXXXXXXXX
-ca-app-pub-7519373541244298/7596189615->ca-app-pub-ad_intstl_id~XXXXXXXXXXXX
+ca-app-pub-ADMOBXXX~XXXXXXXXXXXX->ca-app-pub-ad_app_id~XXXXXXXXXXXX
+ca-app-pub-ADMOBXXX/XXXXXXXXXXXX->ca-app-pub-ad_banner_id~XXXXXXXXXXXX
+ca-app-pub-ADMOBXXX/XXXXXXXXXXXX->ca-app-pub-ad_intstl_id~XXXXXXXXXXXX
