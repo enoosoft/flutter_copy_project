@@ -4,12 +4,12 @@
 >Copy whole project to another. Enter the conversion keyword to convert it.
 
 ## How to copy flutter project
-1. get this project to your folder
+1. **get this project to your folder**
 ```
 git clone "https://github.com/enoosoft/flutter_copy_project.git"
 ```
 
-2. Run fcpy.dart in root directory with arguments
+2. **Run fcpy.dart in root directory with arguments**
 ```
 dart bin/fcpy.dart --converter to-be.txt --source C:\Sync\Works\smmy --destination C:\Sync\Works\dmmy
 ```
