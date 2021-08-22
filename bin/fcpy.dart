@@ -16,11 +16,11 @@ Future<void> main(List<String> arguments) async {
   var args = parser.parse(arguments);
 
   await load(args['converter']);
-  tobeMap.forEach((key, value) => stdout.writeln('$key $value'));
 
   copyDirectory(Directory(args['source']), Directory(args['destination']));
 }
 
+///basically, copy and convert
 void copyDirectory(Directory source, Directory destination) =>
     source.listSync(recursive: false).forEach((var entity) {
       final fullPath = decodePath(
@@ -36,9 +36,6 @@ void copyDirectory(Directory source, Directory destination) =>
 
         copyDirectory(entity.absolute, newDirectory);
       } else if (entity is File) {
-        // final filePath =
-        //     path.join(destination.path, path.basename(entity.path));
-
         if (isBinary(entity)) {
           stdout.writeln('[BINARY] $fullPath');
           entity.copySync(fullPath);
@@ -51,6 +48,7 @@ void copyDirectory(Directory source, Directory destination) =>
       }
     });
 
+///replace the keyword contained in the source file
 String decode(String str) {
   tobeMap.forEach((key, value) {
     if (str.contains(key)) {
@@ -61,6 +59,7 @@ String decode(String str) {
   return str;
 }
 
+///converts and creates a folder structure that creates a directory with a package name, such as Java, Kotlin.
 String decodePath(String str) {
   tobeMap.forEach((key, value) {
     if (key.startsWith('/') || key.startsWith('\\')) {
@@ -86,6 +85,7 @@ bool isBinary(File file) {
   return false;
 }
 
+///load converter file - Defined conversion rules
 Future<void> load(String convertFile) async {
   final lines = utf8.decoder
       .bind(File(convertFile).openRead())
