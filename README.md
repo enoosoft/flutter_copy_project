@@ -15,18 +15,18 @@ dart bin/fcpy.dart --converter to-be.txt --source C:\Sync\Works\smmy --destinati
 ```
  - Arguments
 
-Argument|Example|Description
+Arguments|Example|Description
 |--|--|--|
 converter|`to-be.txt`|Define conversion rules
-source|C:\Sync\Works\smmy|Source template project folder
-destination|C:\Sync\Works\smmy|New project folder to create
+source|C:\your\workspace\existing_project|Source template project folder
+destination|C:\your\workspace\new_project|New project folder to create
 
  - What does the converter(`to-be.txt`) file do
 
 Basically, replace the keyword contained in the source file.<br> 
 Conversion rules are expressed as `before` -> `after`<br> 
 Define conversion rules what ever you need.<br> 
-eg. **package name**, **app name**, **`package directory`**, **Admob IDs**, etc.
+eg. **`package name`**, **`app name`**, **`package directory`**, **`Admob IDs`**, etc.
 
 ```
 # package name
