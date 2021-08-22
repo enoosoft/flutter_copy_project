@@ -14,7 +14,7 @@ git clone "https://github.com/enoosoft/flutter_copy_project.git"
 
 **2. Run fcpy.dart in root directory with arguments**
 ```
-dart bin/fcpy.dart --converter to-be.txt --source C:\works\existing_prj --destination C:\works\new_prj
+dart bin/fcpy.dart --converter to-be.txt --source C:\Works\smmy --destination C:\Works\dmmy
 ```
 <br>
 
@@ -23,8 +23,8 @@ dart bin/fcpy.dart --converter to-be.txt --source C:\works\existing_prj --destin
 Arguments|Example|Description
 |--|--|--|
 converter|`to-be.txt`|Define conversion rules
-source|C:\your\workspace\existing_project|Source template project folder
-destination|C:\your\workspace\new_project|New project folder to create
+source|C:\Works\existing_project|Source template project folder
+destination|C:\Works\new_project|New project folder to create
 <br>
 
 - **How converter(`to-be.txt`) file wors**
