@@ -13,7 +13,7 @@ git clone "https://github.com/enoosoft/flutter_copy_project.git"
 ```
 dart bin/fcpy.dart --converter to-be.txt --source C:\Sync\Works\smmy --destination C:\Sync\Works\dmmy
 ```
- - Arguments
+ - **Arguments**
 
 Arguments|Example|Description
 |--|--|--|
@@ -21,7 +21,7 @@ converter|`to-be.txt`|Define conversion rules
 source|C:\your\workspace\existing_project|Source template project folder
 destination|C:\your\workspace\new_project|New project folder to create
 
- - What does the converter(`to-be.txt`) file do
+ - **How converter(`to-be.txt`) file wors**
 
 Basically, replace the keyword contained in the source file.<br> 
 Conversion rules are expressed as `before` -> `after`<br> 
