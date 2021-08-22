@@ -14,7 +14,7 @@ git clone "https://github.com/enoosoft/flutter_copy_project.git"
 
 **2. Run fcpy.dart in root directory with arguments**
 ```
-dart bin/fcpy.dart --converter to-be.txt --source C:\Sync\Works\smmy --destination C:\Sync\Works\dmmy
+dart bin/fcpy.dart --converter to-be.txt --source C:\your\workspace\existing_project --destination C:\your\workspace\new_project
 ```
 <br>
 
