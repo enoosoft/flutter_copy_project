@@ -2,17 +2,22 @@
 
 
 >Copy whole project to another. Enter the conversion keyword to convert it.
-
+<br>
+<br>
 ## How to copy flutter project
-1. **get this project to your folder**
+---
+**1. get this project to your folder**
 ```
 git clone "https://github.com/enoosoft/flutter_copy_project.git"
 ```
+<br>
 
-2. **Run fcpy.dart in root directory with arguments**
+**2. Run fcpy.dart in root directory with arguments**
 ```
 dart bin/fcpy.dart --converter to-be.txt --source C:\Sync\Works\smmy --destination C:\Sync\Works\dmmy
 ```
+<br>
+
  - **Arguments**
 
 Arguments|Example|Description
@@ -20,8 +25,9 @@ Arguments|Example|Description
 converter|`to-be.txt`|Define conversion rules
 source|C:\your\workspace\existing_project|Source template project folder
 destination|C:\your\workspace\new_project|New project folder to create
+<br>
 
- - **How converter(`to-be.txt`) file wors**
+- **How converter(`to-be.txt`) file wors**
 
 Basically, replace the keyword contained in the source file.<br> 
 Conversion rules are expressed as `before` -> `after`<br> 
@@ -51,12 +57,14 @@ ca-app-pub-ADMOBcXXX/XXXXXXXXXXXX->ca-app-pub-ad_intstl_id~XXXXXXXXXXXX
 `package directory` converts and creates a folder structure that creates a directory with a package name, such as `Java`, `Kotlin`.
 
 ## Updates
+---
 
 * 0.0.1 
   * Create project 2021-08-22
 
 
 ## About
+---
 
 * Developer: EnooSoft
 * Email: [as.enoosoft@gmail.com](mailto:as.enoosoft@gmail.com)
