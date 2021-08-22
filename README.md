@@ -27,7 +27,7 @@ source|C:\Works\existing_project|Source template project folder
 destination|C:\Works\new_project|New project folder to create
 <br>
 
-- **How converter(`to-be.txt`) file wors**
+- **How converter(`to-be.txt`) file works**
 
 Basically, replace the keyword contained in the source file.<br> 
 Conversion rules are expressed as `before` -> `after`<br> 
