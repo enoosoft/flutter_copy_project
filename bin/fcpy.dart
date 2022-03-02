@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:args/args.dart';
 import 'package:path/path.dart' as path;
 
-//userge: dart bin/fcpy.dart --converter to-be.txt --source C:\Sync\Works\smmy --destination C:\Sync\Works\dmmy
+//userge: dart bin/fcpy.dart --converter to-be.txt --source ~/Sync/Works/godutch --destination ~/Sync/Works/agodutch
 
 Map<String, String> tobeMap = {};
 Future<void> main(List<String> arguments) async {
@@ -27,7 +27,10 @@ void copyDirectory(Directory source, Directory destination) =>
           path.join(destination.absolute.path, path.basename(entity.path)));
       if (fullPath.contains('\\build\\') ||
           fullPath.contains('\\.gradle\\') ||
-          fullPath.contains('\\.git\\')) {
+          fullPath.contains('\\.git\\') ||
+          fullPath.contains('/build/') ||
+          fullPath.contains('/.gradle/') ||
+          fullPath.contains('/.git/')) {
         stdout.writeln('SKIPED>>> $fullPath');
       } else if (entity is Directory) {
         var newDirectory = Directory(fullPath);
@@ -38,7 +41,7 @@ void copyDirectory(Directory source, Directory destination) =>
       } else if (entity is File) {
         if (isBinary(entity)) {
           stdout.writeln('[BINARY] $fullPath');
-          entity.copySync(fullPath);
+          entity.copy(fullPath);
         } else {
           stdout.writeln('[TEXT] $fullPath');
           final sourceFile = entity.readAsStringSync();
@@ -82,6 +85,10 @@ bool isBinary(File file) {
     }
   }
   raf.close();
+
+  if (file.path.endsWith('.pdf')) {
+    return true;
+  }
   return false;
 }
 
