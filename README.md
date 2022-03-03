@@ -14,7 +14,8 @@ git clone "https://github.com/enoosoft/flutter_copy_project.git"
 
 **2. Run fcpy.dart in root directory with arguments**
 ```
-dart bin/fcpy.dart --converter to-be.txt --source C:\Works\smmy --destination C:\Works\dmmy
+[Windows] dart bin/fcpy.dart --converter to-be.txt --source C:\Works\smmy --destination C:\Works\dmmy
+[iOS]     dart bin/fcpy.dart --converter to-be.txt --source  ~/Works/smmy --destination  ~/Works/dmmy
 ```
 <br>
 
@@ -32,8 +33,8 @@ pod install
 Arguments|Example|Description
 |--|--|--|
 converter|`to-be.txt`|Define conversion rules
-source|C:\Works\existing_project|Source template project folder
-destination|C:\Works\new_project|New project folder to create
+source|~/Works/existing_project|Source template project folder
+destination|~/Works/new_project|New project folder to create
 <br>
 
 - **How converter(`to-be.txt`) file works**
@@ -77,4 +78,4 @@ ca-app-pub-ADMOBcXXX/XXXXXXXXXXXX->ca-app-pub-ad_intstl_id~XXXXXXXXXXXX
 
 * Developer: EnooSoft
 * Email: [as.enoosoft@gmail.com](mailto:as.enoosoft@gmail.com)
-* Last modify: 2021-08-22
+* Last modify: 2022-03-03
