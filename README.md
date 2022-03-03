@@ -44,11 +44,11 @@ Define conversion rules what ever you need.<br>
 eg. **`package name`**, **`app name`**, **`package directory`**, **`Admob IDs`**, etc.
 
 ```
-# package name
-com.example.smmy->com.example.dmmy
-
 # app name
 smmy -> dmmy
+
+# package name
+com.example.smmy->com.example.dmmy
 
 # package directory(windows) 
 # start with slash and do not end with slash  
@@ -56,7 +56,7 @@ smmy -> dmmy
 
 # package directory(linux) 
 # start with slash and do not end with slash
-#/com/example/smmy->/com/example/dmmy
+/com/example/smmy->/com/example/dmmy
 
 # Admob IDs
 ca-app-pub-ADMOBaXXX~XXXXXXXXXXXX->ca-app-pub-ad_app_id~XXXXXXXXXXXX
