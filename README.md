@@ -18,6 +18,15 @@ dart bin/fcpy.dart --converter to-be.txt --source C:\Works\smmy --destination C:
 ```
 <br>
 
+**3. [iOS] Go to copied project root, install Pods**
+```
+cd ios
+pod install
+```
+<br>
+
+
+
  - **Arguments**
 
 Arguments|Example|Description
