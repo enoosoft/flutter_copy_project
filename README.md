@@ -7,24 +7,28 @@
 ## How to copy flutter project
 ---
 **1. get this project to your folder**
-```
+```sh
 git clone "https://github.com/enoosoft/flutter_copy_project.git"
 ```
 <br>
 
 **2. Run fcpy.dart in root directory with arguments**
-```
-[Windows] dart bin/fcpy.dart --converter to-be.txt --source C:\Works\smmy --destination C:\Works\dmmy
-[iOS]     dart bin/fcpy.dart --converter to-be.txt --source  ~/Works/smmy --destination  ~/Works/dmmy
+```sh
+# Windows
+dart bin/fcpy.dart --converter to-be.txt --source C:\Works\smmy --destination C:\Works\dmmy
+
+# iOS
+dart bin/fcpy.dart --converter to-be.txt --source  ~/Works/smmy --destination  ~/Works/dmmy
 ```
 <br>
 
 **3. Go to copied project root, get pub and install Pods**
-```
+```sh
+# Windows, iOS
 flutter clean
 flutter pub get
 
-[iOS]
+# iOS
 cd ios
 pod install
 ```
@@ -48,7 +52,7 @@ Conversion rules are expressed as `before` -> `after`<br>
 Define conversion rules what ever you need.<br> 
 eg. **`package name`**, **`app name`**, **`package directory`**, **`Admob IDs`**, etc.
 
-```
+```sh
 # app name or keyword
 smmy -> dmmy
 
