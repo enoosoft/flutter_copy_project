@@ -1,9 +1,11 @@
+import 'dart:developer';
 import 'dart:io';
 import 'dart:convert';
 import 'package:args/args.dart';
 import 'package:path/path.dart' as path;
 
-//userge: dart bin/fcpy.dart --converter to-be.txt --source ~/Sync/Works/godutch --destination ~/Sync/Works/agodutch
+//userge: dart run --enable-asserts bin/fcpy.dart --converter to-be.txt --source  ~/Sync/Works/godutch --destination  ~/Sync/Works/agodutch
+//userge: dart run --enable-asserts bin/fcpy.dart --converter to-be.txt --source C:/Sync/Works/godutch --destination C:/Sync/Works/agodutch
 
 Map<String, String> tobeMap = {};
 Future<void> main(List<String> arguments) async {
@@ -21,35 +23,41 @@ Future<void> main(List<String> arguments) async {
 }
 
 ///basically, copy and convert
-void copyDirectory(Directory source, Directory destination) =>
-    source.listSync(recursive: false).forEach((var entity) {
-      final fullPath = decodePath(
-          path.join(destination.absolute.path, path.basename(entity.path)));
-      if (fullPath.contains('\\build\\') ||
-          fullPath.contains('\\.gradle\\') ||
-          fullPath.contains('\\.git\\') ||
-          fullPath.contains('/build/') ||
-          fullPath.contains('/.gradle/') ||
-          fullPath.contains('/.git/')) {
-        stdout.writeln('SKIPED>>> $fullPath');
-      } else if (entity is Directory) {
-        var newDirectory = Directory(fullPath);
-        stdout.writeln('*CREATE ${newDirectory.path}');
-        newDirectory.createSync(recursive: true);
+void copyDirectory(Directory source, Directory destination) {
+  stdout.writeln(destination.path);
+  source.listSync(recursive: false).forEach((var entity) async {
+    final fullPath = decodePath(
+        path.join(destination.absolute.path, path.basename(entity.path)));
 
-        copyDirectory(entity.absolute, newDirectory);
-      } else if (entity is File) {
-        if (isBinary(entity)) {
-          stdout.writeln('[BINARY] $fullPath');
-          entity.copy(fullPath);
-        } else {
-          stdout.writeln('[TEXT] $fullPath');
-          final sourceFile = entity.readAsStringSync();
-          var destFile = File(fullPath);
-          destFile.writeAsString(decode(sourceFile));
-        }
+    if (fullPath.contains('\\build\\') ||
+        fullPath.contains('\\.gradle\\') ||
+        fullPath.contains('\\.git\\') ||
+        fullPath.contains('/build/') ||
+        fullPath.contains('/.gradle/') ||
+        fullPath.contains('/.git/') ||
+        fullPath.contains('/Pods/') ||
+        fullPath.contains('\\Pods\\')) {
+      stdout.writeln('SKIPED>>> $fullPath');
+    } else if (entity is Directory) {
+      var newDirectory = Directory(fullPath);
+      stdout.writeln('*CREATE ${newDirectory.path}');
+      newDirectory.createSync(recursive: true);
+
+      copyDirectory(entity.absolute, newDirectory);
+    } else if (entity is File) {
+      if (await isBinary(entity)) {
+        stdout.writeln('[BINARY] $fullPath');
+        await entity.copy(fullPath);
+      } else {
+        stdout.writeln('[TEXT] $fullPath');
+        final sourceFile = entity.readAsStringSync();
+        var destFile = File(fullPath);
+        await destFile.writeAsString(decode(sourceFile));
       }
-    });
+      ;
+    }
+  });
+}
 
 ///replace the keyword contained in the source file
 String decode(String str) {
@@ -75,16 +83,16 @@ String decodePath(String str) {
   return str;
 }
 
-bool isBinary(File file) {
+Future<bool> isBinary(File file) async {
   final raf = file.openSync(mode: FileMode.read);
   final data = raf.readSync(124);
   for (final b in data) {
     if (b >= 0x00 && b <= 0x08) {
-      raf.close();
+      await raf.close();
       return true;
     }
   }
-  raf.close();
+  await raf.close();
 
   if (file.path.endsWith('.pdf')) {
     return true;
@@ -99,7 +107,7 @@ Future<void> load(String convertFile) async {
       .transform(const LineSplitter());
   try {
     await for (final line in lines) {
-      if (line.trim().length > 8 && !line.trim().startsWith('#')) {
+      if (line.trim().length >= 6 && !line.trim().startsWith('#')) {
         final tobe = line.split('\-\>');
         tobeMap[tobe[0].trim()] = tobe[1].trim();
       }

@@ -1,16 +1,18 @@
-# package name
-com.enoo.godutch->com.enoo.agodutch
 
 # app name
-godutch -> agodutch
+smmy -> dmmy
+
+# package name
+com.enoo.smmy->com.enoo.dmmy
+
 
 # package directory(windows) 
 # start with slash and do not end with slash  
-\com\enoo\godutch->\com\enoo\agodutch
+\com\enoo\smmy->\com\enoo\dmmy
 
 # package directory(linux) 
 # start with slash and do not end with slash
-/com/enoo/godutch->/com/enoo/godutch
+/com/enoo/smmy->/com/enoo/dmmy
 
 # Admob IDs
 ca-app-pub-ADMOBaXXX~XXXXXXXXXXXX->ca-app-pub-ad_app_id~XXXXXXXXXXXX
