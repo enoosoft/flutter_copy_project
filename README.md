@@ -49,7 +49,7 @@ Define conversion rules what ever you need.<br>
 eg. **`package name`**, **`app name`**, **`package directory`**, **`Admob IDs`**, etc.
 
 ```
-# app name
+# app name or keyword
 smmy -> dmmy
 
 # package name
@@ -59,7 +59,7 @@ com.example.smmy->com.example.dmmy
 # start with slash and do not end with slash  
 \com\example\smmy->\com\example\dmmy
 
-# package directory(linux) 
+# package directory(ios) 
 # start with slash and do not end with slash
 /com/example/smmy->/com/example/dmmy
 
