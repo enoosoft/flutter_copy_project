@@ -19,8 +19,11 @@ git clone "https://github.com/enoosoft/flutter_copy_project.git"
 ```
 <br>
 
-**3. [iOS] Go to copied project root, install Pods**
+**3. Go to copied project root, install Pods**
 ```
+flutter pub get
+
+[iOS]
 cd ios
 pod install
 ```
