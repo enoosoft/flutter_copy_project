@@ -1,4 +1,4 @@
-# Flutter copy project
+# Copying flutter project
 
 
 >Copy whole project to another. Enter the conversion keyword to convert it.
@@ -14,17 +14,30 @@ git clone "https://github.com/enoosoft/flutter_copy_project.git"
 
 **2. Run fcpy.dart in root directory with arguments**
 ```
-dart bin/fcpy.dart --converter to-be.txt --source C:\Works\smmy --destination C:\Works\dmmy
+[Windows] dart bin/fcpy.dart --converter to-be.txt --source C:\Works\smmy --destination C:\Works\dmmy
+[iOS]     dart bin/fcpy.dart --converter to-be.txt --source  ~/Works/smmy --destination  ~/Works/dmmy
 ```
 <br>
+
+**3. Go to copied project root, install Pods**
+```
+flutter pub get
+
+[iOS]
+cd ios
+pod install
+```
+<br>
+
+
 
  - **Arguments**
 
 Arguments|Example|Description
 |--|--|--|
 converter|`to-be.txt`|Define conversion rules
-source|C:\Works\existing_project|Source template project folder
-destination|C:\Works\new_project|New project folder to create
+source|~/Works/existing_project|Source template project folder
+destination|~/Works/new_project|New project folder to create
 <br>
 
 - **How converter(`to-be.txt`) file works**
@@ -35,11 +48,11 @@ Define conversion rules what ever you need.<br>
 eg. **`package name`**, **`app name`**, **`package directory`**, **`Admob IDs`**, etc.
 
 ```
-# package name
-com.example.smmy->com.example.dmmy
-
 # app name
 smmy -> dmmy
+
+# package name
+com.example.smmy->com.example.dmmy
 
 # package directory(windows) 
 # start with slash and do not end with slash  
@@ -47,7 +60,7 @@ smmy -> dmmy
 
 # package directory(linux) 
 # start with slash and do not end with slash
-#/com/example/smmy->/com/example/dmmy
+/com/example/smmy->/com/example/dmmy
 
 # Admob IDs
 ca-app-pub-ADMOBaXXX~XXXXXXXXXXXX->ca-app-pub-ad_app_id~XXXXXXXXXXXX
@@ -68,4 +81,4 @@ ca-app-pub-ADMOBcXXX/XXXXXXXXXXXX->ca-app-pub-ad_intstl_id~XXXXXXXXXXXX
 
 * Developer: EnooSoft
 * Email: [as.enoosoft@gmail.com](mailto:as.enoosoft@gmail.com)
-* Last modify: 2021-08-22
+* Last modify: 2022-03-03
