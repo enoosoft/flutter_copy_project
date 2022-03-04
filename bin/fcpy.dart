@@ -1,5 +1,5 @@
-import 'dart:io';
 import 'dart:convert';
+import 'dart:io';
 import 'package:args/args.dart';
 import 'package:path/path.dart' as path;
 
@@ -23,24 +23,15 @@ Future<void> main(List<String> arguments) async {
 
 ///basically, copy and convert
 void copyDirectory(Directory source, Directory destination) {
-  stdout.writeln(destination.path);
   source.listSync(recursive: false).forEach((var entity) async {
     final fullPath = decodePath(
         path.join(destination.absolute.path, path.basename(entity.path)));
-
-    if (fullPath.contains('\\build\\') ||
-        fullPath.contains('\\.gradle\\') ||
-        fullPath.contains('\\.git\\') ||
-        fullPath.contains('/build/') ||
-        fullPath.contains('/.gradle/') ||
-        fullPath.contains('/.git/') ||
-        fullPath.contains('/Pods/') ||
-        fullPath.contains('\\Pods\\')) {
-      stdout.writeln('SKIPED>>> $fullPath');
+    if (ignored(fullPath)) {
+      stdout.writeln('IGNORED $fullPath');
     } else if (entity is Directory) {
       var newDirectory = Directory(fullPath);
-      stdout.writeln('*CREATE ${newDirectory.path}');
       newDirectory.createSync(recursive: true);
+      stdout.writeln('CREATED ${newDirectory.path}');
 
       copyDirectory(entity.absolute, newDirectory);
     } else if (entity is File) {
@@ -57,12 +48,23 @@ void copyDirectory(Directory source, Directory destination) {
   });
 }
 
+///check ignored folder list
+bool ignored(String fullPath) {
+  const ignore = ['build', '.gradle', '.git', 'Pods'];
+  for (var item in ignore) {
+    if (fullPath.contains('/$item/') || fullPath.contains('\\$item\\')) {
+      return true;
+    }
+  }
+  return false;
+}
+
 ///replace the keyword contained in the source file
 String decode(String str) {
   tobeMap.forEach((key, value) {
     if (str.contains(key)) {
       str = str.replaceAll(key, value);
-      stdout.writeln('  $key -> $value');
+      stdout.writeln('  REPLACE $key -> $value');
     }
   });
   return str;
@@ -74,7 +76,7 @@ String decodePath(String str) {
     if (key.startsWith('/') || key.startsWith('\\')) {
       if (str.contains(key)) {
         str = str.replaceAll(key, value);
-        stdout.writeln('  $value -> $value');
+        stdout.writeln('  RENAME_PATH $key -> $value');
       }
     }
   });
