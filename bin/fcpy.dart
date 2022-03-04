@@ -91,10 +91,6 @@ Future<bool> isBinary(File file) async {
     }
   }
   await raf.close();
-
-  if (file.path.endsWith('.pdf')) {
-    return true;
-  }
   return false;
 }
 
