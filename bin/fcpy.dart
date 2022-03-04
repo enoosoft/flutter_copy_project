@@ -53,7 +53,6 @@ void copyDirectory(Directory source, Directory destination) {
         var destFile = File(fullPath);
         await destFile.writeAsString(decode(sourceFile));
       }
-      ;
     }
   });
 }
@@ -107,7 +106,7 @@ Future<void> load(String convertFile) async {
   try {
     await for (final line in lines) {
       if (line.trim().length >= 6 && !line.trim().startsWith('#')) {
-        final tobe = line.split('\-\>');
+        final tobe = line.split('->');
         tobeMap[tobe[0].trim()] = tobe[1].trim();
       }
     }
