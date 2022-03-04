@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:args/args.dart';
 import 'package:path/path.dart' as path;
 
-//userge: dart run --enable-asserts bin/fcpy.dart --converter to-be.txt --source  ~/Sync/Works/godutch --destination  ~/Sync/Works/agodutch
-//userge: dart run --enable-asserts bin/fcpy.dart --converter to-be.txt --source C:/Sync/Works/godutch --destination C:/Sync/Works/agodutch
+//userge: dart run bin/fcpy.dart --converter my-to-be.txt --source  ~/Sync/Works/godutch --destination  ~/Sync/Works/adutch
+//userge: dart run bin/fcpy.dart --converter to-be.txt --source C:/Sync/Works/godutch --destination C:/Sync/Works/agodutch
 
 Map<String, String> tobeMap = {};
 Future<void> main(List<String> arguments) async {
@@ -105,7 +105,7 @@ Future<void> load(String convertFile) async {
       .transform(const LineSplitter());
   try {
     await for (final line in lines) {
-      if (line.trim().length >= 6 && !line.trim().startsWith('#')) {
+      if (line.trim().length >= 4 && !line.trim().startsWith('#')) {
         final tobe = line.split('->');
         tobeMap[tobe[0].trim()] = tobe[1].trim();
       }
