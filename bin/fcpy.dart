@@ -3,8 +3,8 @@ import 'dart:io';
 import 'package:args/args.dart';
 import 'package:path/path.dart' as path;
 
-//userge: dart run bin/fcpy.dart --converter my-to-be.txt --source  ~/Sync/Works/godutch --destination  ~/Sync/Works/adutch
-//userge: dart run bin/fcpy.dart --converter to-be.txt --source C:/Sync/Works/godutch --destination C:/Sync/Works/agodutch
+//usage: dart run bin/fcpy.dart --converter my-to-be.txt --source  ~/Workspace/flutter/gdch --destination  ~/Workspace/flutter/agdch
+//usage: dart run bin/fcpy.dart --converter to-be.txt --source C:/Sync/Works/godutch --destination C:/Sync/Works/agodutch
 
 Map<String, String> tobeMap = {};
 Future<void> main(List<String> arguments) async {
@@ -24,8 +24,7 @@ Future<void> main(List<String> arguments) async {
 ///basically, copy and convert
 void copyDirectory(Directory source, Directory destination) {
   source.listSync(recursive: false).forEach((var entity) async {
-    final fullPath = decodePath(
-        path.join(destination.absolute.path, path.basename(entity.path)));
+    final fullPath = decodePath(path.join(destination.absolute.path, path.basename(entity.path)));
     if (ignored(fullPath)) {
       stdout.writeln('IGNORED $fullPath');
     } else if (entity is Directory) {
@@ -84,6 +83,7 @@ String decodePath(String str) {
 }
 
 Future<bool> isBinary(File file) async {
+  if (file.path.toLowerCase().endsWith('.pdf')) return true;
   final raf = file.openSync(mode: FileMode.read);
   final data = raf.readSync(124);
   for (final b in data) {
@@ -98,9 +98,7 @@ Future<bool> isBinary(File file) async {
 
 ///load converter file - Defined conversion rules
 Future<void> load(String convertFile) async {
-  final lines = utf8.decoder
-      .bind(File(convertFile).openRead())
-      .transform(const LineSplitter());
+  final lines = utf8.decoder.bind(File(convertFile).openRead()).transform(const LineSplitter());
   try {
     await for (final line in lines) {
       if (line.trim().length >= 4 && !line.trim().startsWith('#')) {
